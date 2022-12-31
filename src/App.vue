@@ -1,10 +1,31 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link :to="{ name: 'split-by-colors' }">Split by colors</router-link>
   </nav>
   <router-view />
 </template>
+
+<script>
+export default {
+  setup() {
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+      const handler = (e) => {
+        if (e.scale !== 1) {
+          e.preventDefault();
+        }
+      };
+
+      window.addEventListener("touchmove", handler, { passive: false });
+      window.document.addEventListener("touchmove", handler, {
+        passive: false,
+      });
+    }
+
+    return {};
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -26,5 +47,23 @@ nav {
       color: #42b983;
     }
   }
+}
+
+body {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+  -webkit-touch-callout: none !important;
+  -webkit-user-callout: none !important;
+  -webkit-user-select: none !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+}
+* {
+  touch-action: pan-y pan-x;
+  -webkit-touch-callout: none !important;
+  -webkit-user-callout: none !important;
+  -webkit-user-select: none !important;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: none !important;
 }
 </style>

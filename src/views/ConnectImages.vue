@@ -315,4 +315,23 @@ canvas {
   display: flex;
   justify-content: center;
 }
+
+@media screen and (max-width: 767px) {
+  .col {
+    width: 200px;
+  }
+
+  canvas {
+    height: 200px;
+
+    .move-down & {
+      top: 250px;
+    }
+  }
+
+  .show {
+    width: 200px;
+    height: 200px;
+  }
+}
 </style>

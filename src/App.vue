@@ -133,7 +133,7 @@ $bg-height: 50px;
 }
 
 /* Main styles */
-body {
+.body {
   color: #999;
   font: 400 16px/1.5 exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
   text-align: center;

@@ -220,6 +220,7 @@ export default {
   left: 0px;
   top: 30px;
   width: 460px;
+  width: 61%;
   height: 250px;
   clip-path: polygon(0 0, 100% 0, 79.5% 100%, 0% 100%);
 }
@@ -274,6 +275,7 @@ export default {
 #contain-4 {
   height: 250px;
   width: 350px;
+  width: 47%;
   position: absolute;
   clip-path: polygon(50% 6%, 0% 100%, 100% 100%);
   bottom: 0px;
@@ -514,5 +516,58 @@ export default {
 .burger-container.open span:nth-child(4) {
   transform: rotate(45deg);
   top: -7px !important;
+}
+
+@media screen and (max-width: 767px) {
+  #contain-1 {
+    h1 {
+      bottom: 180px;
+      left: 10px;
+      font-size: 22px;
+    }
+  }
+
+  #contain-3 {
+    h1 {
+      bottom: 150px;
+      font-size: 22px;
+    }
+  }
+
+  #contain-5 {
+    h1 {
+      bottom: 150px;
+      font-size: 22px;
+    }
+  }
+
+  .board-contain img {
+    width: 180%;
+  }
+
+  #contain-2 {
+    h1 {
+      bottom: 180px;
+      font-size: 22px;
+    }
+  }
+
+  #contain-6 {
+    width: 150px;
+    height: 150px;
+
+    h1 {
+      font-size: 25px;
+    }
+  }
+
+  #contain-bugfix {
+    width: 170px;
+    height: 170px;
+  }
+
+  .board-list-show {
+    margin-top: 30px;
+  }
 }
 </style>

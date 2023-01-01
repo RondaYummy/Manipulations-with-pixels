@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { ref, watch, onBeforeUnmount } from "vue";
+import { ref, watch } from "vue";
 import { toDataURL } from "../utils/additionall";
 import preview from "../assets/images/preview.jpeg";
 import PreviewMain from "@/components/PreviewMain.vue";
@@ -208,13 +208,6 @@ export default {
         row.value.classList.toggle("go-right-bottom");
       }, 15000);
     };
-
-    const body = document.querySelector("body");
-    const bg = body.style.background;
-    body.style.background = "none";
-    onBeforeUnmount(() => {
-      body.style.background = bg;
-    });
 
     return {
       toggleImages,

@@ -61,9 +61,9 @@ export default {
   width: 100%;
   min-height: 100px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 
   .right {
     padding-left: 20px;
@@ -145,6 +145,17 @@ a {
         width: 30px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .card {
+    min-height: 150px;
+    width: auto;
   }
 }
 </style>

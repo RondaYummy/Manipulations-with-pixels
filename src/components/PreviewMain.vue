@@ -11,7 +11,7 @@ import { onMounted } from "vue";
 
 export default {
   props: {
-    stringMessage: Array,
+    stringMessage: String,
   },
   setup(props) {
     const chartsArray = props.stringMessage.split(" ");

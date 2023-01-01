@@ -129,10 +129,8 @@ export default {
     const animateMenu = () => {
       if (!showMenu.value) {
         showMenu.value = !showMenu.value;
-        setTimeout(() => {
-          showSubmenu.value = !showSubmenu.value;
-          showTitle.value = !showTitle.value;
-        }, 600);
+        showSubmenu.value = !showSubmenu.value;
+        showTitle.value = !showTitle.value;
       } else {
         showSubmenu.value = !showSubmenu.value;
         setTimeout(() => {
@@ -164,6 +162,7 @@ export default {
 
 .navigation-menu-show {
   min-height: 100vh;
+  height: 100vh;
 }
 
 .navigation-menu-hide {

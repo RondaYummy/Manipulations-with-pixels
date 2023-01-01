@@ -1,4 +1,9 @@
 <template>
+  <div class="preview-connect">
+    <preview-main
+      :string-message="'Розділення картинки на пікселі. Завантажте будь-які дві картинки та подивіться на результат.'"
+    />
+  </div>
   <div class="main-wrapper">
     <main class="main">
       <div class="container-container">
@@ -56,8 +61,12 @@
 
 <script>
 import { ref, onMounted } from "vue";
+import PreviewMain from "@/components/PreviewMain.vue";
 
 export default {
+  components: {
+    PreviewMain,
+  },
   setup() {
     const inp1 = ref();
     const inp2 = ref();
@@ -180,7 +189,6 @@ export default {
 .main-wrapper {
   min-height: 100%;
   overflow: hidden;
-  margin-top: 90px;
   position: relative;
 }
 
@@ -301,5 +309,10 @@ canvas {
 
 .show {
   opacity: 1;
+}
+
+.preview-connect {
+  display: flex;
+  justify-content: center;
 }
 </style>

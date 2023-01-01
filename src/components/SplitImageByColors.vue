@@ -1,4 +1,9 @@
 <template>
+  <div class="preview-colors">
+    <preview-main
+      :string-message="'Виділити з картинки основні кольора RGBA, та показати це наглядно. RGBA - це 3 основні кольора: Red, Green, Blue. A - альфа-канал.'"
+    />
+  </div>
   <main class="main">
     <div class="container">
       <div class="row">
@@ -46,8 +51,12 @@
 import { ref, watch, onBeforeUnmount } from "vue";
 import { toDataURL } from "../utils/additionall";
 import preview from "../assets/images/preview.jpeg";
+import PreviewMain from "@/components/PreviewMain.vue";
 
 export default {
+  components: {
+    PreviewMain,
+  },
   setup() {
     const red = ref(false);
     const green = ref(false);
@@ -481,5 +490,12 @@ input[type="file"] {
   width: 100%;
   height: 100%;
   opacity: 0;
+}
+
+.preview-colors {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0px;
 }
 </style>

@@ -15,6 +15,18 @@ const routes = [
         /* webpackChunkName: "main" */ "../views/SplitImageByColorsView.vue"
       ),
   },
+  {
+    path: "/connect",
+    name: "connect-two-images",
+    component: () =>
+      import(/* webpackChunkName: "main" */ "../views/ConnectImages.vue"),
+  },
+  {
+    path: "/coming-soon",
+    name: "coming-soon",
+    component: () =>
+      import(/* webpackChunkName: "main" */ "../views/ComingSoon.vue"),
+  },
 ];
 
 const router = createRouter({

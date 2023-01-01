@@ -1,5 +1,5 @@
 <template>
-  <div class="split">
+  <div>
     <split-image-by-colors />
   </div>
 </template>

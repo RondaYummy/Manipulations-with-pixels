@@ -1,13 +1,15 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link :to="{ name: 'split-by-colors' }">Split by colors</router-link>
-  </nav>
+  <navigation-menu />
   <router-view />
 </template>
 
 <script>
+import NavigationMenu from "./components/NavigationMenu.vue";
+
 export default {
+  components: {
+    NavigationMenu,
+  },
   setup() {
     if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
       const handler = (e) => {
@@ -34,6 +36,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  max-height: 100%;
 }
 
 nav {
@@ -57,6 +60,7 @@ body {
   -webkit-user-select: none !important;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: none;
+  margin: 0;
 }
 * {
   touch-action: pan-y pan-x;

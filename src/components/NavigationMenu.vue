@@ -164,7 +164,7 @@ export default {
 }
 
 .navigation-menu-show {
-  height: 540px;
+  min-height: 100vh;
 }
 
 .navigation-menu-hide {

@@ -1,5 +1,8 @@
 # Manipulations with image Pixels
 
+## Demo site
+https://pixels.levych.com
+
 ## Project setup
 ```
 npm install

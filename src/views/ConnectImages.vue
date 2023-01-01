@@ -5,7 +5,12 @@
         <div class="row">
           <div class="col">
             <div class="input-holder">
-              <input ref="inp1" id="imgInput1" type="file" />
+              <input
+                @change="changeInput(1, $event)"
+                ref="inp1"
+                id="imgInput1"
+                type="file"
+              />
             </div>
             <img
               id="img1"
@@ -13,13 +18,19 @@
               src=""
               width="400"
               height="400"
-              alt=""
+              alt="First image"
+              :class="showSecondImage === 1 ? 'show' : ''"
             />
             <canvas ref="cnv1" id="cnv1"></canvas>
           </div>
           <div class="col">
             <div class="input-holder">
-              <input ref="inp2" id="imgInput2" type="file" />
+              <input
+                @change="changeInput(2, $event)"
+                ref="inp2"
+                id="imgInput2"
+                type="file"
+              />
             </div>
             <img
               id="img2"
@@ -27,7 +38,8 @@
               src=""
               width="400"
               height="400"
-              alt=""
+              alt="Second image"
+              :class="showSecondImage === 2 ? 'show' : ''"
             />
             <canvas ref="cnv2" id="cnv2"></canvas>
           </div>
@@ -58,22 +70,27 @@ export default {
     onMounted(() => {
       cnv1.value.width = cnv2.value.width = w;
       cnv1.value.height = cnv2.value.height = h;
-
-      [inp1.value, inp2.value].forEach((input, i) => {
-        input.addEventListener("change", async (e) => {
-          const parentColumn = e.target.closest(".col");
-          const image = parentColumn.querySelector("img");
-          const ctx = parentColumn.querySelector("canvas").getContext("2d");
-          const url = URL.createObjectURL(e.target.files[0]);
-          const order = i === 0 ? "odd" : "even";
-
-          let data = await getImageData(image, url, w, h);
-          data = erasePixels(data, order);
-
-          ctx.putImageData(data, 0, 0);
-        });
-      });
     });
+
+    const showFirstImage = ref(0);
+    const showSecondImage = ref(0);
+    const changeInput = async (orders, e) => {
+      if (orders === 1) {
+        showFirstImage.value = orders;
+      } else {
+        showSecondImage.value = orders;
+      }
+      const parentColumn = e.target.closest(".col");
+      const image = parentColumn.querySelector("img");
+      const ctx = parentColumn.querySelector("canvas").getContext("2d");
+      const url = URL.createObjectURL(e.target.files[0]);
+      const order = orders === 0 ? "odd" : "even";
+
+      let data = await getImageData(image, url, w, h);
+      data = erasePixels(data, order);
+
+      ctx.putImageData(data, 0, 0);
+    };
 
     async function getImageData(img, url, w, h) {
       let cnv = document.createElement("canvas");
@@ -138,10 +155,13 @@ export default {
       inp2,
       cnv1,
       cnv2,
+      showFirstImage,
+      showSecondImage,
       getImageData,
       erasePixels,
       moveDown,
       connectImages,
+      changeInput,
     };
   },
 };
@@ -239,9 +259,12 @@ input {
 }
 
 .input-holder::before {
-  content: "Upload file";
+  content: "Upload image";
 }
 
+img {
+  opacity: 0;
+}
 .input-holder input {
   position: absolute;
   top: 0;
@@ -271,5 +294,9 @@ canvas {
   .connected .col:nth-child(2) & {
     left: calc(-50% - 5px);
   }
+}
+
+.show {
+  opacity: 1;
 }
 </style>

@@ -156,7 +156,6 @@ export default {
 .navigation-menu {
   background: #131313;
   padding-bottom: 50px;
-  margin-bottom: 50px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.66);
   max-height: 100%;
   overflow: hidden;

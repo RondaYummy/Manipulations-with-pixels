@@ -1,44 +1,41 @@
 <template>
   <h1>
-    <span>Маніпуляції</span>
-    <span>з</span>
-    <span>пікселями</span>
-    <span>на</span>
-    <span>фото</span>
-    <span>без</span>
-    <span>використання</span>
-    <span>бібліотек.</span>
-    <span> Тут</span>
-    <span>зібрані</span>
-    <span>усі</span>
-    <span>приклади</span>
-    <span>моїх</span>
-    <span>робіт.</span>
-    <span>В цьому</span>
-    <span>прикладі</span>
-    <span>я використовую</span>
-    <span>Vue 3 + PWA.</span>
+    <template v-for="(item, index) of chartsArray" :key="index">
+      <span>{{ item }}</span>
+    </template>
   </h1>
 </template>
 
 <script>
-export default {};
+import { onMounted } from "vue";
+
+export default {
+  props: {
+    stringMessage: Array,
+  },
+  setup(props) {
+    const chartsArray = props.stringMessage.split(" ");
+
+    onMounted(() => {
+      const allSpans = document.querySelectorAll("span");
+      allSpans.forEach((item, i) => {
+        if (i > 9) {
+          const number = `${i}`.split("")[0] + "." + `${i}`.split("")[1];
+          item.style["animation-delay"] = `${number}s`;
+        } else {
+          item.style["animation-delay"] = `0.${i}s`;
+        }
+      });
+    });
+
+    return {
+      chartsArray,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-* {
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 h1 {
   max-width: 40ch;
   text-align: center;
@@ -59,76 +56,8 @@ span {
   margin-left: 5px;
 }
 
-span:nth-child(1) {
-  animation: fade-in 0.8s 0.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(2) {
-  animation: fade-in 0.8s 0.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(3) {
-  animation: fade-in 0.8s 0.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(4) {
-  animation: fade-in 0.8s 0.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(5) {
-  animation: fade-in 0.8s 0.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(6) {
-  animation: fade-in 0.8s 0.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(7) {
-  animation: fade-in 0.8s 0.7s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(8) {
-  animation: fade-in 0.8s 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(9) {
-  animation: fade-in 0.8s 0.9s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(10) {
-  animation: fade-in 0.8s 1s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(11) {
-  animation: fade-in 0.8s 1.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(12) {
-  animation: fade-in 0.8s 1.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(13) {
-  animation: fade-in 0.8s 1.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(14) {
-  animation: fade-in 0.8s 1.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(15) {
-  animation: fade-in 0.8s 1.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(16) {
-  animation: fade-in 0.8s 1.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(17) {
-  animation: fade-in 0.8s 1.7s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-span:nth-child(18) {
-  animation: fade-in 0.8s 1.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+span {
+  animation: fade-in 0.8s 1000s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
 @keyframes fade-in {

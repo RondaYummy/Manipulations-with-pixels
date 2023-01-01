@@ -361,8 +361,8 @@ export default {
 
 .bottom-anime-grill img {
   position: absolute;
-  bottom: -30px;
-  margin-left: -999px;
+  bottom: -40px;
+  left: 10px;
 }
 
 .bottom-deco {

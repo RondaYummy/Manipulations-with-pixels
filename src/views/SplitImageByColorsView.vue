@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <split-image-by-colors />
-  </div>
+  <split-image-by-colors />
 </template>
 
 <script>

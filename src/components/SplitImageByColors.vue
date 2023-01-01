@@ -9,24 +9,25 @@
         <div class="col" data-color="GREEN"></div>
         <div class="col" data-color="BLUE"></div>
       </div>
-      <div>
-        <label class="button-style" for="avatar">Upload image</label>
-        <input
-          type="file"
-          name="avatar"
-          id="avatar"
-          ref="fileInput"
-          accept="image/*"
-          @change="uploadFile"
-        />
-        <button
-          class="button-style"
-          id="btn"
-          type="button"
-          @click="toggleImages"
-        >
-          Split images
-        </button>
+      <div class="column">
+        <div class="row-btn">
+          <div class="input-holder">
+            <input
+              @change="uploadFile"
+              ref="fileInput"
+              type="file"
+              accept="image/*"
+            />
+          </div>
+          <button
+            class="button-style"
+            id="btn"
+            type="button"
+            @click="toggleImages"
+          >
+            Split images
+          </button>
+        </div>
         <button
           class="button-style"
           id="btn"
@@ -42,7 +43,7 @@
 </template>
 
 <script>
-import { ref, watch } from "vue";
+import { ref, watch, onBeforeUnmount } from "vue";
 import { toDataURL } from "../utils/additionall";
 import preview from "../assets/images/preview.jpeg";
 
@@ -199,6 +200,13 @@ export default {
       }, 15000);
     };
 
+    const body = document.querySelector("body");
+    const bg = body.style.background;
+    body.style.background = "none";
+    onBeforeUnmount(() => {
+      body.style.background = bg;
+    });
+
     return {
       toggleImages,
       uploadFile,
@@ -216,6 +224,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+}
+
 *,
 *::before,
 *::after {
@@ -238,7 +254,7 @@ button {
   justify-content: center;
   width: 100%;
   max-width: 1600px;
-  padding: 0 20px;
+  padding: 125px 20px 20px 20px;
   margin: 0 auto;
 
   @media screen and (max-width: 420px) {
@@ -401,16 +417,15 @@ img {
 }
 
 .button-style {
-  padding: 7px 20px;
-  background-color: green;
-  color: white;
-  font-size: 18px;
-  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 150px;
+  height: 40px;
+  border: 1px solid tomato;
   cursor: pointer;
-  transition: opacity 0.5s 0.3s;
-  margin-right: 3px;
-  margin-left: 3px;
-  height: 35px;
+  margin: 10px 0px;
 }
 
 input[type="file"] {
@@ -435,5 +450,36 @@ input[type="file"] {
 .display-none {
   display: none;
   transition: display 0.3s;
+}
+
+.row-btn {
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+}
+
+.input-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 150px;
+  height: 40px;
+  border: 1px solid tomato;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+
+.input-holder::before {
+  content: "Upload image";
+}
+
+.input-holder input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
 </style>

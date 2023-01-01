@@ -1,7 +1,7 @@
 <template>
   <div class="main-wrapper">
     <main class="main">
-      <div class="container">
+      <div class="container-container">
         <div class="row">
           <div class="col">
             <div class="input-holder">
@@ -19,7 +19,7 @@
               width="400"
               height="400"
               alt="First image"
-              :class="showSecondImage === 1 ? 'show' : ''"
+              :class="showFirstImage ? 'show' : ''"
             />
             <canvas ref="cnv1" id="cnv1"></canvas>
           </div>
@@ -39,17 +39,16 @@
               width="400"
               height="400"
               alt="Second image"
-              :class="showSecondImage === 2 ? 'show' : ''"
+              :class="showSecondImage ? 'show' : ''"
             />
             <canvas ref="cnv2" id="cnv2"></canvas>
           </div>
         </div>
+      </div>
 
-        <div class="row-btn">
-          <button type="button" @click="moveDown">Move down</button>
-
-          <button type="button" @click="connectImages">Connect</button>
-        </div>
+      <div class="row-btn">
+        <button type="button" @click="moveDown">Move down</button>
+        <button type="button" @click="connectImages">Connect</button>
       </div>
     </main>
   </div>
@@ -72,13 +71,13 @@ export default {
       cnv1.value.height = cnv2.value.height = h;
     });
 
-    const showFirstImage = ref(0);
-    const showSecondImage = ref(0);
+    const showFirstImage = ref(false);
+    const showSecondImage = ref(false);
     const changeInput = async (orders, e) => {
       if (orders === 1) {
-        showFirstImage.value = orders;
+        showFirstImage.value = true;
       } else {
-        showSecondImage.value = orders;
+        showSecondImage.value = true;
       }
       const parentColumn = e.target.closest(".col");
       const image = parentColumn.querySelector("img");
@@ -182,6 +181,7 @@ export default {
   min-height: 100%;
   overflow: hidden;
   margin-top: 90px;
+  position: relative;
 }
 
 li {
@@ -193,15 +193,15 @@ button {
   border: 0;
 }
 
-.container {
+.container-container {
   position: relative;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 125px 20px 20px 20px;
 
   @media (min-width: 1120px) {
-    padding: 0 20px;
+    padding: 100px 20px 20px 20px;
   }
 }
 
@@ -231,7 +231,7 @@ input {
   justify-content: center;
   gap: 10px;
   padding: 10px;
-  height: 700px;
+  height: 850px;
 }
 
 .row-btn {
@@ -239,7 +239,10 @@ input {
   justify-content: center;
   gap: 10px;
   padding: 10px;
-  margin-top: 200px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
 }
 
 .col {

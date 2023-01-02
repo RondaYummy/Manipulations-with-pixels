@@ -36,10 +36,8 @@
     <div class="container-title" v-if="showTitle">
       <span class="anim-text-flow">
         <span>
-          <span>Manipulations</span>
-          <span> with</span>
-          <span> image</span>
-          <span> pixels </span>
+          <span>Pixel</span>
+          <span> Manipulations</span>
         </span>
       </span>
     </div>

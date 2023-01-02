@@ -1,4 +1,4 @@
-# Manipulations with image Pixels
+# Pixel Manipulations
 
 ## Demo site
 https://pixels.levych.com

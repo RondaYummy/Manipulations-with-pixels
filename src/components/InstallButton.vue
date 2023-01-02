@@ -1,54 +1,43 @@
 <template>
-  <div class="column">
-    <section class="install-box">
-      <div class="cat">
-        <span class="ear left-ear"></span>
-        <span class="ear right-ear"></span>
-        <span class="eyes">
-          <span class="eye left-eye"></span>
-          <span class="eye right-eye"></span>
-        </span>
-        <div class="fur">
-          <span class="hair hair-1"></span>
-          <span class="hair hair-2"></span>
-          <span class="hair hair-3"></span>
-          <span class="hair hair-4"></span>
-          <span class="hair hair-5"></span>
-          <span class="hair hair-6"></span>
-          <span class="hair hair-7"></span>
-        </div>
+  <div class="cat">
+    <span class="ear left-ear"></span>
+    <span class="ear right-ear"></span>
+    <span class="eyes">
+      <span class="eye left-eye"></span>
+      <span class="eye right-eye"></span>
+    </span>
+    <div class="fur">
+      <span class="hair hair-1"></span>
+      <span class="hair hair-2"></span>
+      <span class="hair hair-3"></span>
+      <span class="hair hair-4"></span>
+      <span class="hair hair-5"></span>
+      <span class="hair hair-6"></span>
+      <span class="hair hair-7"></span>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="left flex">
+        <h1 class="title">Install<br />for perfect experience!</h1>
       </div>
-
-      <div class="container">
-        <div class="card">
-          <div class="left flex">
-            <h1 class="title">Install<br />for perfect experience!</h1>
-          </div>
-          <div class="right">
-            <div class="btn">
-              <div class="btn-cntnr" @click="showInstallPrompt">
-                <div class="btn-text flex">Install</div>
-                <div class="btn-icon">
-                  <img src="../assets/images/install.png" alt="Install image" />
-                </div>
-              </div>
+      <div class="right">
+        <div class="btn">
+          <div class="btn-cntnr" @click="showInstallPrompt">
+            <div class="btn-text flex">Install</div>
+            <div class="btn-icon">
+              <img src="../assets/images/install.png" alt="Install image" />
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <preview-main :string-message="chartsData" />
+    </div>
   </div>
 </template>
 
 <script>
-import PreviewMain from "@/components/PreviewMain.vue";
-
 export default {
-  components: {
-    PreviewMain,
-  },
+  components: {},
   setup() {
     const showInstallPrompt = async () => {
       const promptEvent = window.deferredPrompt;
@@ -76,7 +65,7 @@ export default {
 .container {
   max-width: 700px;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 240px;
 }
 
 @media all and (display-mode: standalone) {
@@ -383,6 +372,7 @@ a {
 @media screen and (max-width: 767px) {
   .container {
     max-width: 90%;
+    margin-top: 100px;
   }
 
   .card {

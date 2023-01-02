@@ -1,19 +1,24 @@
 <template>
   <div class="home">
     <install-button />
+    <preview-main :string-message="chartsData" />
   </div>
 </template>
 
 <script>
 import { onBeforeUnmount, onMounted } from "vue";
+import PreviewMain from "@/components/PreviewMain.vue";
 import InstallButton from "../components/InstallButton.vue";
 
 export default {
   name: "HomeView",
   components: {
+    PreviewMain,
     InstallButton,
   },
   setup() {
+    const chartsData =
+      "Маніпуляції з пікселями на фото без використання бібліотек. Тут зібрані усі приклади моїх робіт. Для навігації між прикладами, використовуйте меню.";
     onBeforeUnmount(() => {
       document.querySelector("body").classList.toggle("body");
     });
@@ -21,7 +26,9 @@ export default {
       document.querySelector("body").classList.toggle("body");
     });
 
-    return {};
+    return {
+      chartsData,
+    };
   },
 };
 </script>
@@ -30,8 +37,8 @@ export default {
 .home {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
-  height: 100%;
 }
 
 @media screen and (max-width: 767px) {

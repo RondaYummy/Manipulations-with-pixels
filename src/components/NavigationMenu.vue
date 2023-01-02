@@ -107,9 +107,6 @@
       </router-link>
       <div class="board-contain" id="contain-bugfix"></div>
     </div>
-    <div class="bottom-anime-grill">
-      <img src="../assets/images/korwa.png" />
-    </div>
   </div>
 
   <div class="feedback__button"></div>
@@ -343,25 +340,6 @@ export default {
   width: 320px;
   background: #0a0a0a;
   clip-path: circle(50% at 50% 50%);
-}
-
-.bottom-anime-grill {
-  z-index: -1;
-  filter: brightness(0.9);
-  position: absolute;
-  top: 760px;
-  width: 100%;
-  height: 770px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.bottom-anime-grill img {
-  position: absolute;
-  bottom: -40px;
-  left: 10px;
 }
 
 .bottom-deco {

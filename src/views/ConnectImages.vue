@@ -3,6 +3,11 @@
     <preview-main
       :string-message="'Розділення картинки на пікселі. Завантажте будь-які дві картинки та подивіться на результат.'"
     />
+    <span>
+      Увага, в цьому прикладі використовується
+      <a href="https://caniuse.com/?search=mix-blend-mode">mix-blend-mode</a>,
+      який може не підтримуватись у вашому браузері.
+    </span>
   </div>
   <div class="main-wrapper">
     <main class="main">
@@ -314,6 +319,18 @@ canvas {
 .preview-connect {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  span {
+    margin-top: 10px;
+    color: red;
+
+    a {
+      color: red;
+      font-weight: bold;
+    }
+  }
 }
 
 @media screen and (max-width: 767px) {
